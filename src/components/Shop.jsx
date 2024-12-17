@@ -1,9 +1,9 @@
-export default function Shop({ childrent }) {
+export default function Shop({ children }) {
   return (
     <section id="shop">
       <h2>Elegant Clothing For Everyone</h2>
 
-      <ul id="products">{childrent}</ul>
+      <ul id="products">{children}</ul>
     </section>
   );
 }

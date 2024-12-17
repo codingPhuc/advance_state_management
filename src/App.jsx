@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Product from "./Product.jsx";
-
+import Product from "./components/Product.jsx";
+import { CartContext } from "./store/shopping-cart-context.jsx";
 import Header from "./components/Header.jsx";
 import Shop from "./components/Shop.jsx";
 import { DUMMY_PRODUCTS } from "./dummy-products.js";
@@ -74,9 +74,10 @@ function App() {
       };
     });
   }
-
+  // app compnent is a great place to wrap the context
   return (
-    <>
+    // get the properties  of the CartContext nested component
+    <CartContext.Provider value={{ items: [] }}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -89,7 +90,7 @@ function App() {
           </li>
         ))}
       </Shop>
-    </>
+    </CartContext.Provider>
   );
 }
 
