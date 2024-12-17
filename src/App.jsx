@@ -74,10 +74,17 @@ function App() {
       };
     });
   }
+
+  const ctxValue = {
+    items: shoppingCart.items,
+    addItemsToCart: handleAddItemToCart,
+  };
+
   // app compnent is a great place to wrap the context
   return (
     // get the properties  of the CartContext nested component
-    <CartContext.Provider value={{ items: [] }}>
+    // link the context to state
+    <CartContext.Provider value={ctxValue}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
