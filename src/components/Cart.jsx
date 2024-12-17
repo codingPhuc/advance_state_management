@@ -8,7 +8,7 @@ export default function Cart({ onUpdateItemQuantity }) {
   // use only availible for newer react version
   // const cartCtx = use(CartContext);
   // you can destructure the context as well
-  const { items } = useContext(CartContext);
+  const { items, updateItemQuantity } = useContext(CartContext);
 
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -32,11 +32,11 @@ export default function Cart({ onUpdateItemQuantity }) {
                 </div>
                 <div className="cart-item-actions">
                   {/* it need  a props to be pass to we used ananonymous function  */}
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>

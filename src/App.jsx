@@ -78,6 +78,7 @@ function App() {
   const ctxValue = {
     items: shoppingCart.items,
     addItemsToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
   };
 
   // app compnent is a great place to wrap the context
@@ -85,15 +86,12 @@ function App() {
     // get the properties  of the CartContext nested component
     // link the context to state
     <CartContext.Provider value={ctxValue}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+      <Header />
       {/* this will lead to a very bloated application  */}
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
