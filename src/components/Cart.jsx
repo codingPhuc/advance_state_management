@@ -10,14 +10,19 @@ export default function Cart({ onUpdateItemQuantity }) {
   // you can destructure the context as well
   const { items, updateItemQuantity } = useContext(CartContext);
 
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+
   return (
-    <CartContext.Consumer>
-      {(cartCtx) => {
-        const totalPrice = cartCtx.items.reduce(
-          (acc, item) => acc + item.price * item.quantity,
-          0
-        );
-        const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+    <div id="cart">
+      {items.length === 0 && <p>No items in cart!</p>}
+      {items.length > 0 && (
+        <ul id="cart-items">
+          {items.map((item) => {
+            const formattedPrice = `$${item.price.toFixed(2)}`;
 
             return (
               <li key={item.id}>
