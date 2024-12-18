@@ -7,6 +7,14 @@ export const CartContext = createContext({
   updateItemQuantity: () => {},
 });
 
+function shoppingCartReducer(state, action) {
+  if (action.type === "ADD_ITEM") {
+    return {};
+  }
+
+  return state;
+}
+
 export default function CartContextProvider({ children }) {
   //  initialize the cart items by  by assigning it a state
   // the reason for a state is to watch for when the cart change to rerender the component
